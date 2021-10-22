@@ -1,0 +1,3 @@
+ultimo(X,[X]).
+ultimo(X,[X|Y]) :- ultimo(X,Y).
+

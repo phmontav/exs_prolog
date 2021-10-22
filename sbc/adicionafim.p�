@@ -1,0 +1,2 @@
+adiciona(X,[],[X]).
+adiciona(X,[H|L1],[H|L2]) :- adiciona(X,L1,L2).

@@ -1,0 +1,2 @@
+subset([A|X], Y) :- member(A,Y), subset(X,Y).
+subset([],Y).
