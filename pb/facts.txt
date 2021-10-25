@@ -1,0 +1,60 @@
+mortal(X) :- pessoa(X).
+
+isso siginifica -> toda pessoa é mortal, X é uma variável
+
+mortal(X) é a cabeça da regra
+pessoa(X) é o corpo
+
+
+avo(X,Y) :- pai_mae(X,Z), pai_mae(Z,Y).
+
+as ',' são ands e ';' são or
+sempre terminar com .
+
+
+fatos são tipo:
+
+mortal(socrates).
+mortal(pb).
+
+da pra criar rules recursivas:
+
+predecessor(X, Z) :- parent(X, Z).
+predecessor(X, Z) :- parent(X, Y),predecessor(Y, Z).
+
+criamos duas definições pra predecessor
+
+
+lists
+
+L = [a | tail]
+tail is another list (can be empty)
+[a,b,c] = [a | [b,c]] = [a,b | [c]] = [a,b,c | []]
+
+pertence a lista:
+- vamos usar a estrategia de recursão, são 2 possíveis casos:
+    -> elemento é a cabeça da lista
+    -> elemento pertence ao resto da lista
+
+list_member(X, [X | _ ]).
+list_member(X, [X | [ _ | TAIL ]]) :- list_member(X, TAIL).
+
+tamanho lista:
+- andar até lista ficar vazia:
+
+len_list([],0).
+len_list([ _ | TAIL], N) :- len_list(TAIL, N1), N is N1 + 1.
+
+concat lista:
+- vai colocando os elementos de L1 no 3o argumento até ficar vazio e ter apenas L2.
+
+concat([], L, L).
+concat([X1|L1], L2, [X1, L3]) :- concat(L1,L2,L3).
+
+delete element lista:
+
+del(X, [X], []).
+del(X, [X | TAIL], TAIL).
+del(X, [ _ | TAIL ], [ _ | REMAINDER]) :- del(X, TAIL, REMAINDER).
+
+parei em append.
